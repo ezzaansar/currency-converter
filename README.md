@@ -19,7 +19,7 @@ A simple web-based currency converter that fetches real-time exchange rates and 
 
 ## Usage
 
-1. Open `currency converter/index.html` in a browser
+1. Open `index.html` in a browser
 2. Enter the amount to convert
 3. Select source and target currencies
 4. Click "Get Exchange Rate"
@@ -28,11 +28,10 @@ A simple web-based currency converter that fetches real-time exchange rates and 
 
 ```
 Currency-Converter/
-├── currency converter/
-│   ├── index.html    # Main HTML file
-│   ├── app.js        # Application logic
-│   ├── codes.js      # Currency code mappings
-│   └── style.css     # Styles
+├── index.html    # Main HTML file
+├── app.js        # Application logic
+├── codes.js      # Currency code mappings
+├── style.css     # Styles
 └── README.md
 ```
 
