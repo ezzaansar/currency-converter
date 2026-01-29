@@ -54,15 +54,25 @@ btn.addEventListener("click", async (evt) => {
 
   // Fetch conversion rate using updated endpoint
   const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}.json`;
-  let response = await fetch(URL);
-  let data = await response.json();
 
-  // Get conversion rate from base currency object
-  let rate = data[fromCurr.value.toLowerCase()][toCurr.value.toLowerCase()];
+  try {
+    let response = await fetch(URL);
 
-  // Calculate final amount
-  let finalAmount = (amtVal * rate).toFixed(2);
+    if (!response.ok) {
+      throw new Error("Failed to fetch exchange rate");
+    }
 
-  // Display message
-  msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+    let data = await response.json();
+
+    // Get conversion rate from base currency object
+    let rate = data[fromCurr.value.toLowerCase()][toCurr.value.toLowerCase()];
+
+    // Calculate final amount
+    let finalAmount = (amtVal * rate).toFixed(2);
+
+    // Display message
+    msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+  } catch (error) {
+    msg.innerText = "Error fetching rate. Please try again.";
+  }
 });
